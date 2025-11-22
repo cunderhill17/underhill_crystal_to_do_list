@@ -1,3 +1,4 @@
+/* Styling Resets */
 * { 
     margin: 0px;
     box-sizing: border-box;
@@ -5,10 +6,22 @@
     color: #808080;
 }
 
+/* Utility Class */
 h1 {
     margin: 10px;
 }
 
+h2 {
+    font-size: 18px;
+    margin: 25px 10px 25px 10px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styling for the add task form */
 form { 
     width: 500px;
     margin: 10px;
@@ -38,16 +51,7 @@ form button:hover {
     cursor: pointer;
 }
 
-section {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-h2 {
-    font-size: 18px;
-    margin: 25px 10px 25px 10px;
-}
-
+/* Styling for List Containers */
 div {
     padding: 15px;
     width: 425px;
@@ -68,6 +72,7 @@ div {
     background-color: #8f580b;
 }
 
+/* Styling for List Items */
 div * { 
     color: white;
 }
@@ -86,4 +91,20 @@ div ul li {
 
 input[type="checkbox"] {
     margin-right: 5px;
+}
+
+/* styling for the delete buttons */
+
+.delete-button {
+    float: right;
+    border: none;
+    background: none;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+}
+
+.delete-button i { 
+    font-size: 18px;
 }
