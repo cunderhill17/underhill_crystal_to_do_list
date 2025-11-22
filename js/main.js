@@ -17,4 +17,26 @@ function addListItem(e) {
     console.log(myListArray);
 
     counter++
+
+    updateList();
+}
+
+//Function to display list contents
+function updateList() {
+    const container = document.querySelector(`#listContainer`);
+    container.innerHTML = "";
+
+    myListArray.forEach(item => {
+        const li = document.createElement("li");
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.id = `list-item-${item.itemNumber}`;
+        checkbox.name = `list-item-${item.itemNumber}`;
+
+        li.appendChild(checkbox);
+        li.append(item.itemValue);
+
+        container.appendChild(li);
+    });
 }
