@@ -78,12 +78,70 @@ function updateInProgress() {
 
         checkbox.type = "checkbox";
         checkbox.id = `list-item-${item.itemNumber}`;
-        // checkbox.classList = "checkbox"
+        checkbox.classList = "progressbox"
         checkbox.name = `list-item-${item.itemNumber}`;
+
+        //Adds event listen for when the boxes are checked
+        checkbox.addEventListener('change', tasksFinished);
 
         li.appendChild(checkbox);
         li.append(item.itemValue);
 
         container.appendChild(li);
     });
+}
+
+//Function to move tasks from initial list to In Progress List
+let tasksFinishedArray = [];
+
+function tasksFinished() {
+    if (this.checked) {
+        const itemNumber = parseInt(this.id.replace('list-item-', ''), 10);
+
+        const index = inProgressArray.findIndex(item => item.itemNumber === itemNumber);
+        if (index!== -1) {
+            const [item] = inProgressArray.splice(index, 1);
+            tasksFinishedArray.push(item);
+        }
+
+        //console check to make sure items are being added to the array correctly
+        console.log(tasksFinishedArray);
+
+        updateInProgress();
+        updateFinished();
+    }
+}
+
+//Function to display list items in the In Progress List
+function updateFinished() {
+    const container = document.querySelector('#itemsCompletedContainer');
+    container.innerHTML = "";
+
+    tasksFinishedArray.forEach(item => {
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+
+        button.classList.add('delete-button');
+        button.id = `list-item-${item.itemNumber}`;
+        button.innerHTML = `<i class='fa fa-trash'></i>`;
+
+        button.addEventListener('click', deleteTask);
+
+        li.append(item.itemValue);
+        li.appendChild(button);
+
+        container.appendChild(li);
+    });
+}
+
+//Functionality for deleting completed tasks
+function deleteTask() {
+    const itemNumber = parseInt(this.id.replace('list-item-', ''), 10);
+
+    const index = tasksFinishedArray.findIndex(item => item.itemNumber === itemNumber);
+    if (index!== -1) {
+        tasksFinishedArray.splice(index, 1);
+    }
+
+    updateFinished();
 }
