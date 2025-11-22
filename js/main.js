@@ -119,15 +119,17 @@ function updateFinished() {
 
     tasksFinishedArray.forEach(item => {
         const li = document.createElement("li");
+        const span = document.createElement("span");
         const button = document.createElement("button");
+
+        span.textContent = item.itemValue;
 
         button.classList.add('delete-button');
         button.id = `list-item-${item.itemNumber}`;
         button.innerHTML = `<i class='fa fa-trash'></i>`;
-
         button.addEventListener('click', deleteTask);
 
-        li.append(item.itemValue);
+        li.appendChild(span);
         li.appendChild(button);
 
         container.appendChild(li);

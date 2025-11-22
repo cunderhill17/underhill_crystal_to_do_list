@@ -94,7 +94,6 @@ input[type="checkbox"] {
 }
 
 /* styling for the delete buttons */
-
 .delete-button {
     float: right;
     border: none;
@@ -108,3 +107,16 @@ input[type="checkbox"] {
 .delete-button i { 
     font-size: 18px;
 }
+
+/* Styling for Completed Tasks */
+#itemsCompletedContainer span {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+/* Styling for the psuedo selectors */
+#itemsCompletedContainer li::before {
+    content: '\2705';
+    margin-right: 5px;
+}
+
