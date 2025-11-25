@@ -2,8 +2,10 @@
 * { 
     margin: 0px;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     color: #808080;
+    font-family: "ltc-remington-typewriter-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* Utility Class */
@@ -16,15 +18,20 @@ h1 {
     background-color: white;
     padding: 10px;
     text-align: center;
+    font-size: 48px;
+    font-family: "ltc-remington-typewriter-pro", sans-serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
 h2 {
     font-size: 18px;
     margin: 25px 10px 25px 10px;
     text-align: center;
+    letter-spacing: 1px;
 }
 
-section {
+div.tasksContainer {
     display: flex;
     flex-wrap: wrap;
 }
@@ -37,8 +44,8 @@ section {
 
 /* Styling for the add task form */
 form { 
-    width: 500px;
     margin: 10px;
+    margin-top: 50px;
 }
 
 form label {
@@ -48,7 +55,7 @@ form label {
 }
 
 form input {
-    width: 79%;
+    width: 500px;
     height: 50px;
     border: 2px solid #808080;
     padding-left: 10px;
@@ -56,7 +63,7 @@ form input {
 }
 
 form button { 
-    width: 20%;
+    width: 125px;
     height: 50px;
     border: none;
     background-color: #cd8a2c;
@@ -68,7 +75,7 @@ form button:hover {
 }
 
 /* Styling for List Containers */
-div {
+section {
     padding: 15px;
     width: 425px;
     min-height: 300px;
@@ -89,20 +96,27 @@ div {
 }
 
 /* Styling for List Items */
-div * { 
+section * { 
     color: white;
 }
 
-div ul {
+section ul {
     padding: 0px
 }
 
-div ul li {
+section ul li {
+    position: relative;
     list-style-type: none;
-    padding: 10px 5px;
+    padding: 5px 5px;
     margin: 10px;
     background-color: rgba(255, 192, 103, 0.6);
     border-bottom: 2px solid white;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+section.completed ul li {
+    padding-right: 32px;
 }
 
 input[type="checkbox"] {
@@ -111,7 +125,8 @@ input[type="checkbox"] {
 
 /* styling for the delete buttons */
 .delete-button {
-    float: right;
+    position: absolute;
+    right: 5px;
     border: none;
     background: none;
 }
@@ -127,13 +142,36 @@ input[type="checkbox"] {
 /* Styling for Completed Tasks */
 #itemsCompletedContainer span {
     text-decoration: line-through;
-    text-decoration-color: orangered;
+    text-decoration-color: #8f580b;
 }
 
-/* Styling for the psuedo selectors */
+/* Styling for the 'special' selectors */
 #itemsCompletedContainer li::before {
     content: '\2705\FE0E';
     margin-right: 5px;
     color: white;
 }
 
+#listContainer li:nth-child(even) {
+    background-color: #c07f24;
+}
+
+#listContainer li:nth-child(odd) {
+    background-color: #8f580b;
+}
+
+#inProgressContainer li:nth-child(even) {
+    background-color: #8f580b;
+}
+
+#inProgressContainer li:nth-child(odd) {
+    background-color: #e09b39;
+}
+
+#itemsCompletedContainer li:nth-child(even) {
+    background-color: #e09b39;
+}
+
+#itemsCompletedContainer li:nth-child(odd) {
+    background-color: #c07f24;
+}
